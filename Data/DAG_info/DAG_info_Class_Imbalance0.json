@@ -1,0 +1,82 @@
+{
+    "nodes": {
+        "0": {
+            "node_id": 0,
+            "operator": "Data Source",
+            "function": "read_csv",
+            "description": "binary_health_indicators.csv",
+            "to_neighbors": [
+                1,
+                2
+            ]
+        },
+        "1": {
+            "node_id": 1,
+            "operator": "Train Test Split",
+            "function": "train_test_split",
+            "description": "(Train Data)",
+            "to_neighbors": [
+                3
+            ]
+        },
+        "2": {
+            "node_id": 2,
+            "operator": "Train Test Split",
+            "function": "train_test_split",
+            "description": "(Test Data)",
+            "to_neighbors": [
+                4
+            ]
+        },
+        "3": {
+            "node_id": 3,
+            "operator": "Projection",
+            "function": "__getitem__",
+            "description": "to ['Income']",
+            "to_neighbors": [
+                6
+            ]
+        },
+        "4": {
+            "node_id": 4,
+            "operator": "Projection",
+            "function": "__getitem__",
+            "description": "to ['Income']",
+            "to_neighbors": []
+        },
+        "-1": {
+            "node_id": -1,
+            "operator": "Encountered unsupported operation!",
+            "function": null,
+            "description": "Warning! Operator 29 (None) encountered a DataFrame resulting from an operation without mlinspect support!",
+            "to_neighbors": [
+                5
+            ]
+        },
+        "5": {
+            "node_id": 5,
+            "operator": "Train Data",
+            "function": "LogisticRegression",
+            "description": null,
+            "to_neighbors": [
+                7
+            ]
+        },
+        "6": {
+            "node_id": 6,
+            "operator": "Train Labels",
+            "function": "LogisticRegression",
+            "description": null,
+            "to_neighbors": [
+                7
+            ]
+        },
+        "7": {
+            "node_id": 7,
+            "operator": "Estimator",
+            "function": "LogisticRegression",
+            "description": "Logistic Regression",
+            "to_neighbors": []
+        }
+    }
+}

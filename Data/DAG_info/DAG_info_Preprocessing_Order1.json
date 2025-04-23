@@ -1,0 +1,127 @@
+{
+    "nodes": {
+        "0": {
+            "node_id": 0,
+            "operator": "Data Source",
+            "function": "read_csv",
+            "description": "5050_split.csv",
+            "to_neighbors": [
+                1,
+                2
+            ]
+        },
+        "1": {
+            "node_id": 1,
+            "operator": "Train Test Split",
+            "function": "train_test_split",
+            "description": "(Train Data)",
+            "to_neighbors": [
+                3,
+                11
+            ]
+        },
+        "2": {
+            "node_id": 2,
+            "operator": "Train Test Split",
+            "function": "train_test_split",
+            "description": "(Test Data)",
+            "to_neighbors": [
+                4,
+                8
+            ]
+        },
+        "3": {
+            "node_id": 3,
+            "operator": "Projection",
+            "function": "__getitem__",
+            "description": "to ['Diabetes_binary']",
+            "to_neighbors": [
+                11
+            ]
+        },
+        "4": {
+            "node_id": 4,
+            "operator": "Projection",
+            "function": "__getitem__",
+            "description": "to ['Diabetes_binary']",
+            "to_neighbors": []
+        },
+        "11": {
+            "node_id": 11,
+            "operator": "imblearn.over_sampling",
+            "function": "SMOTE",
+            "description": "SMOTE: fit_resample",
+            "to_neighbors": [
+                5,
+                7
+            ]
+        },
+        "5": {
+            "node_id": 5,
+            "operator": "Transformer",
+            "function": "StandardScaler",
+            "description": "Standard Scaler: fit_transform",
+            "to_neighbors": [
+                10
+            ],
+            "columns": [
+                "array"
+            ]
+        },
+        "10": {
+            "node_id": 10,
+            "operator": "feature_selection",
+            "function": "SelectKBest",
+            "description": "SelectKBest: fit_transform",
+            "to_neighbors": [
+                6
+            ]
+        },
+        "6": {
+            "node_id": 6,
+            "operator": "Train Data",
+            "function": "LogisticRegression",
+            "description": null,
+            "to_neighbors": [
+                7
+            ]
+        },
+        "7": {
+            "node_id": 7,
+            "operator": "Train Labels",
+            "function": "LogisticRegression",
+            "description": null,
+            "to_neighbors": [
+                8
+            ]
+        },
+        "8": {
+            "node_id": 8,
+            "operator": "Estimator",
+            "function": "LogisticRegression",
+            "description": "Logistic Regression",
+            "to_neighbors": []
+        },
+        "9": {
+            "node_id": 9,
+            "operator": "Transformer",
+            "function": "StandardScaler",
+            "description": "Standard Scaler: transform",
+            "to_neighbors": [
+                12
+            ],
+            "columns": [
+                "array"
+            ]
+        },
+        "12": {
+            "node_id": 12,
+            "operator": "feature_selection",
+            "function": "SelectKBest",
+            "description": "SelectKBest: transform",
+            "to_neighbors": [
+                8
+            ]
+        }
+    }
+}

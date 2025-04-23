@@ -1,0 +1,327 @@
+{
+    "nodes": {
+        "0": {
+            "node_id": 0,
+            "operator": "Data Source",
+            "function": "read_csv",
+            "description": "compas-scores-two-years.csv",
+            "to_neighbors": [
+                1,
+                2
+            ]
+        },
+        "1": {
+            "node_id": 1,
+            "operator": "Train Test Split",
+            "function": "train_test_split",
+            "description": "(Train Data)",
+            "to_neighbors": [
+                3
+            ]
+        },
+        "2": {
+            "node_id": 2,
+            "operator": "Train Test Split",
+            "function": "train_test_split",
+            "description": "(Test Data)",
+            "to_neighbors": [
+                4
+            ]
+        },
+        "3": {
+            "node_id": 3,
+            "operator": "Projection",
+            "function": "__getitem__",
+            "description": "to ['sex', 'dob', 'age', 'c_charge_degree', 'race', 'score_text', 'priors_count', 'days_b_screening_arrest', 'decile_score', 'is_recid', 'two_year_recid', 'c_jail_in', 'c_jail_out']",
+            "to_neighbors": [
+                5
+            ]
+        },
+        "4": {
+            "node_id": 4,
+            "operator": "Projection",
+            "function": "__getitem__",
+            "description": "to ['sex', 'dob', 'age', 'c_charge_degree', 'race', 'score_text', 'priors_count', 'days_b_screening_arrest', 'decile_score', 'is_recid', 'two_year_recid', 'c_jail_in', 'c_jail_out']",
+            "to_neighbors": [
+                6
+            ]
+        },
+        "5": {
+            "node_id": 5,
+            "operator": "Projection (Modify)",
+            "function": "replace",
+            "description": "Replace 'Medium' with 'Low'",
+            "to_neighbors": [
+                7
+            ]
+        },
+        "6": {
+            "node_id": 6,
+            "operator": "Projection (Modify)",
+            "function": "replace",
+            "description": "Replace 'Medium' with 'Low'",
+            "to_neighbors": [
+                9
+            ]
+        },
+        "7": {
+            "node_id": 7,
+            "operator": "Projection",
+            "function": "__getitem__",
+            "description": "to ['score_text']",
+            "to_neighbors": [
+                8
+            ]
+        },
+        "8": {
+            "node_id": 8,
+            "operator": "Projection (Modify)",
+            "function": "label_binarize",
+            "description": "label_binarize, classes: ['High', 'Low']",
+            "to_neighbors": [
+                21
+            ]
+        },
+        "9": {
+            "node_id": 9,
+            "operator": "Projection",
+            "function": "__getitem__",
+            "description": "to ['score_text']",
+            "to_neighbors": [
+                10
+            ]
+        },
+        "10": {
+            "node_id": 10,
+            "operator": "Projection (Modify)",
+            "function": "label_binarize",
+            "description": "label_binarize, classes: ['High', 'Low']",
+            "to_neighbors": []
+        },
+        "-1": {
+            "node_id": -1,
+            "operator": "Encountered unsupported operation!",
+            "function": null,
+            "description": "Warning! Operator 53 (None) encountered a DataFrame resulting from an operation without mlinspect support!",
+            "to_neighbors": [
+                11,
+                15
+            ]
+        },
+        "11": {
+            "node_id": 11,
+            "operator": "Projection",
+            "function": "ColumnTransformer",
+            "description": "to ['is_recid']",
+            "to_neighbors": [
+                12,
+                14
+            ]
+        },
+        "12": {
+            "node_id": 12,
+            "operator": "Transformer",
+            "function": "SimpleImputer",
+            "description": "Simple Imputer: fit_transform",
+            "to_neighbors": [
+                13
+            ],
+            "columns": [
+                "is_recid"
+            ]
+        },
+        "13": {
+            "node_id": 13,
+            "operator": "Transformer",
+            "function": "OneHotEncoder",
+            "description": "One-Hot Encoder: fit_transform",
+            "to_neighbors": [],
+            "columns": [
+                "array"
+            ]
+        },
+        "14": {
+            "node_id": 14,
+            "operator": "pipeline",
+            "function": "Pipeline.fit_transform",
+            "description": null,
+            "to_neighbors": [
+                19
+            ]
+        },
+        "15": {
+            "node_id": 15,
+            "operator": "Projection",
+            "function": "Pipeline.fit_transform",
+            "description": "to ['age']",
+            "to_neighbors": [
+                16,
+                18
+            ]
+        },
+        "16": {
+            "node_id": 16,
+            "operator": "Transformer",
+            "function": "SimpleImputer",
+            "description": "Simple Imputer: fit_transform",
+            "to_neighbors": [
+                17
+            ],
+            "columns": [
+                "age"
+            ]
+        },
+        "17": {
+            "node_id": 17,
+            "operator": "Transformer",
+            "function": "KBinsDiscretizer",
+            "description": "K-Bins Discretizer: fit_transform",
+            "to_neighbors": [],
+            "columns": [
+                "array"
+            ]
+        },
+        "18": {
+            "node_id": 18,
+            "operator": "pipeline",
+            "function": "Pipeline.fit_transform",
+            "description": null,
+            "to_neighbors": [
+                19
+            ]
+        },
+        "19": {
+            "node_id": 19,
+            "operator": "Concatenation",
+            "function": "ColumnTransformer",
+            "description": null,
+            "to_neighbors": [
+                20
+            ]
+        },
+        "20": {
+            "node_id": 20,
+            "operator": "Train Data",
+            "function": "LogisticRegression",
+            "description": null,
+            "to_neighbors": [
+                22
+            ]
+        },
+        "21": {
+            "node_id": 21,
+            "operator": "Train Labels",
+            "function": "LogisticRegression",
+            "description": null,
+            "to_neighbors": [
+                22
+            ]
+        },
+        "22": {
+            "node_id": 22,
+            "operator": "Estimator",
+            "function": "LogisticRegression",
+            "description": "Logistic Regression",
+            "to_neighbors": []
+        },
+        "-2": {
+            "node_id": -2,
+            "operator": "Encountered unsupported operation!",
+            "function": null,
+            "description": "Warning! Operator 53 (None) encountered a DataFrame resulting from an operation without mlinspect support!",
+            "to_neighbors": [
+                23,
+                27
+            ]
+        },
+        "23": {
+            "node_id": 23,
+            "operator": "Projection",
+            "function": "ColumnTransformer",
+            "description": "to ['is_recid']",
+            "to_neighbors": [
+                24,
+                26
+            ]
+        },
+        "24": {
+            "node_id": 24,
+            "operator": "Transformer",
+            "function": "SimpleImputer",
+            "description": "Simple Imputer: transform",
+            "to_neighbors": [
+                25
+            ],
+            "columns": [
+                "is_recid"
+            ]
+        },
+        "25": {
+            "node_id": 25,
+            "operator": "Transformer",
+            "function": "OneHotEncoder",
+            "description": "One-Hot Encoder: transform",
+            "to_neighbors": [],
+            "columns": [
+                "array"
+            ]
+        },
+        "26": {
+            "node_id": 26,
+            "operator": "pipeline",
+            "function": "Pipeline.transform",
+            "description": null,
+            "to_neighbors": [
+                31
+            ]
+        },
+        "27": {
+            "node_id": 27,
+            "operator": "Projection",
+            "function": "ColumnTransformer",
+            "description": "to ['age']",
+            "to_neighbors": [
+                28,
+                30
+            ]
+        },
+        "28": {
+            "node_id": 28,
+            "operator": "Transformer",
+            "function": "SimpleImputer",
+            "description": "Simple Imputer: transform",
+            "to_neighbors": [
+                29
+            ],
+            "columns": [
+                "age"
+            ]
+        },
+        "29": {
+            "node_id": 29,
+            "operator": "Transformer",
+            "function": "KBinsDiscretizer",
+            "description": "K-Bins Discretizer: transform",
+            "to_neighbors": [],
+            "columns": [
+                "array"
+            ]
+        },
+        "30": {
+            "node_id": 30,
+            "operator": "pipeline",
+            "function": "Pipeline.transform",
+            "description": null,
+            "to_neighbors": [
+                31
+            ]
+        },
+        "31": {
+            "node_id": 31,
+            "operator": "Concatenation",
+            "function": "ColumnTransformer",
+            "description": null,
+            "to_neighbors": []
+        }
+    }
+}

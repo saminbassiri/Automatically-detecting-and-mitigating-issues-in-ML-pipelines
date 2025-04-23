@@ -1,0 +1,203 @@
+{
+    "nodes": {
+        "0": {
+            "node_id": 0,
+            "operator": "Data Source",
+            "function": "read_csv",
+            "description": "5050_split.csv",
+            "to_neighbors": [
+                1,
+                2
+            ]
+        },
+        "1": {
+            "node_id": 1,
+            "operator": "Train Test Split",
+            "function": "train_test_split",
+            "description": "(Train Data)",
+            "to_neighbors": [
+                3
+            ]
+        },
+        "2": {
+            "node_id": 2,
+            "operator": "Train Test Split",
+            "function": "train_test_split",
+            "description": "(Test Data)",
+            "to_neighbors": [
+                4
+            ]
+        },
+        "3": {
+            "node_id": 3,
+            "operator": "Projection",
+            "function": "__getitem__",
+            "description": "to ['Diabetes_binary']",
+            "to_neighbors": []
+        },
+        "4": {
+            "node_id": 4,
+            "operator": "Projection",
+            "function": "__getitem__",
+            "description": "to ['Diabetes_binary']",
+            "to_neighbors": []
+        },
+        "-1": {
+            "node_id": -1,
+            "operator": "Encountered unsupported operation!",
+            "function": null,
+            "description": "Warning! Operator 28 (None) encountered a DataFrame resulting from an operation without mlinspect support!",
+            "to_neighbors": [
+                5,
+                6,
+                7,
+                8
+            ]
+        },
+        "5": {
+            "node_id": 5,
+            "operator": "Projection",
+            "function": "__getitem__",
+            "description": "to ['Age']",
+            "to_neighbors": []
+        },
+        "6": {
+            "node_id": 6,
+            "operator": "Projection",
+            "function": "__getitem__",
+            "description": "to ['Age']",
+            "to_neighbors": []
+        },
+        "7": {
+            "node_id": 7,
+            "operator": "Selection",
+            "function": "__getitem__",
+            "description": "Select by Series",
+            "to_neighbors": [
+                9,
+                10
+            ]
+        },
+        "8": {
+            "node_id": 8,
+            "operator": "Projection",
+            "function": "__getitem__",
+            "description": "to ['HighChol']",
+            "to_neighbors": []
+        },
+        "9": {
+            "node_id": 9,
+            "operator": "Projection",
+            "function": "__getitem__",
+            "description": "to ['HighChol']",
+            "to_neighbors": []
+        },
+        "10": {
+            "node_id": 10,
+            "operator": "Selection",
+            "function": "__getitem__",
+            "description": "Select by Series",
+            "to_neighbors": []
+        },
+        "-2": {
+            "node_id": -2,
+            "operator": "Encountered unsupported operation!",
+            "function": null,
+            "description": "Warning! Operator 36 (None) encountered a DataFrame resulting from an operation without mlinspect support!",
+            "to_neighbors": [
+                11,
+                12,
+                13,
+                14
+            ]
+        },
+        "11": {
+            "node_id": 11,
+            "operator": "Projection",
+            "function": "__getitem__",
+            "description": "to ['Age']",
+            "to_neighbors": []
+        },
+        "12": {
+            "node_id": 12,
+            "operator": "Projection",
+            "function": "__getitem__",
+            "description": "to ['Age']",
+            "to_neighbors": []
+        },
+        "13": {
+            "node_id": 13,
+            "operator": "Selection",
+            "function": "__getitem__",
+            "description": "Select by Series",
+            "to_neighbors": [
+                15,
+                16
+            ]
+        },
+        "14": {
+            "node_id": 14,
+            "operator": "Projection",
+            "function": "__getitem__",
+            "description": "to ['HighChol']",
+            "to_neighbors": []
+        },
+        "15": {
+            "node_id": 15,
+            "operator": "Projection",
+            "function": "__getitem__",
+            "description": "to ['HighChol']",
+            "to_neighbors": []
+        },
+        "16": {
+            "node_id": 16,
+            "operator": "Selection",
+            "function": "__getitem__",
+            "description": "Select by Series",
+            "to_neighbors": []
+        },
+        "-3": {
+            "node_id": -3,
+            "operator": "Encountered unsupported operation!",
+            "function": null,
+            "description": "Warning! Operator 60 (None) encountered a DataFrame resulting from an operation without mlinspect support!",
+            "to_neighbors": [
+                17
+            ]
+        },
+        "17": {
+            "node_id": 17,
+            "operator": "Train Data",
+            "function": "LogisticRegression",
+            "description": null,
+            "to_neighbors": [
+                19
+            ]
+        },
+        "-4": {
+            "node_id": -4,
+            "operator": "Encountered unsupported operation!",
+            "function": null,
+            "description": "Warning! Operator 60 (None) encountered a DataFrame resulting from an operation without mlinspect support!",
+            "to_neighbors": [
+                18
+            ]
+        },
+        "18": {
+            "node_id": 18,
+            "operator": "Train Labels",
+            "function": "LogisticRegression",
+            "description": null,
+            "to_neighbors": [
+                19
+            ]
+        },
+        "19": {
+            "node_id": 19,
+            "operator": "Estimator",
+            "function": "LogisticRegression",
+            "description": "Logistic Regression",
+            "to_neighbors": []
+        }
+    }
+}

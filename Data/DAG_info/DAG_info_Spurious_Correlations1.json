@@ -1,0 +1,758 @@
+{
+    "nodes": {
+        "0": {
+            "node_id": 0,
+            "operator": "Data Source",
+            "function": "read_csv",
+            "description": "binary_health_indicators.csv",
+            "to_neighbors": [
+                1,
+                2,
+                3
+            ]
+        },
+        "1": {
+            "node_id": 1,
+            "operator": "Projection",
+            "function": "__getitem__",
+            "description": "to ['Diabetes_binary']",
+            "to_neighbors": []
+        },
+        "2": {
+            "node_id": 2,
+            "operator": "Train Test Split",
+            "function": "train_test_split",
+            "description": "(Train Data)",
+            "to_neighbors": [
+                4
+            ]
+        },
+        "3": {
+            "node_id": 3,
+            "operator": "Train Test Split",
+            "function": "train_test_split",
+            "description": "(Test Data)",
+            "to_neighbors": [
+                5
+            ]
+        },
+        "4": {
+            "node_id": 4,
+            "operator": "Projection",
+            "function": "__getitem__",
+            "description": "to ['Diabetes_binary']",
+            "to_neighbors": [
+                8
+            ]
+        },
+        "5": {
+            "node_id": 5,
+            "operator": "Projection",
+            "function": "__getitem__",
+            "description": "to ['Diabetes_binary']",
+            "to_neighbors": []
+        },
+        "-1": {
+            "node_id": -1,
+            "operator": "Encountered unsupported operation!",
+            "function": null,
+            "description": "Warning! Operator 31 (None) encountered a DataFrame resulting from an operation without mlinspect support!",
+            "to_neighbors": [
+                6
+            ]
+        },
+        "6": {
+            "node_id": 6,
+            "operator": "Transformer",
+            "function": "StandardScaler",
+            "description": "Standard Scaler: fit_transform",
+            "to_neighbors": [],
+            "columns": [
+                "array"
+            ]
+        },
+        "-2": {
+            "node_id": -2,
+            "operator": "Encountered unsupported operation!",
+            "function": null,
+            "description": "Warning! Operator 33 (None) encountered a DataFrame resulting from an operation without mlinspect support!",
+            "to_neighbors": [
+                7
+            ]
+        },
+        "7": {
+            "node_id": 7,
+            "operator": "Train Data",
+            "function": "LogisticRegression",
+            "description": null,
+            "to_neighbors": [
+                9
+            ]
+        },
+        "8": {
+            "node_id": 8,
+            "operator": "Train Labels",
+            "function": "LogisticRegression",
+            "description": null,
+            "to_neighbors": [
+                9
+            ]
+        },
+        "9": {
+            "node_id": 9,
+            "operator": "Estimator",
+            "function": "LogisticRegression",
+            "description": "Logistic Regression",
+            "to_neighbors": []
+        },
+        "-3": {
+            "node_id": -3,
+            "operator": "Encountered unsupported operation!",
+            "function": null,
+            "description": "Warning! Operator 31 (None) encountered a DataFrame resulting from an operation without mlinspect support!",
+            "to_neighbors": [
+                10
+            ]
+        },
+        "10": {
+            "node_id": 10,
+            "operator": "Transformer",
+            "function": "StandardScaler",
+            "description": "Standard Scaler: transform",
+            "to_neighbors": [],
+            "columns": [
+                "array"
+            ]
+        },
+        "-4": {
+            "node_id": -4,
+            "operator": "Encountered unsupported operation!",
+            "function": null,
+            "description": "Warning! Operator 31 (None) encountered a DataFrame resulting from an operation without mlinspect support!",
+            "to_neighbors": [
+                11
+            ]
+        },
+        "11": {
+            "node_id": 11,
+            "operator": "Transformer",
+            "function": "StandardScaler",
+            "description": "Standard Scaler: fit_transform",
+            "to_neighbors": [],
+            "columns": [
+                "array"
+            ]
+        },
+        "-5": {
+            "node_id": -5,
+            "operator": "Encountered unsupported operation!",
+            "function": null,
+            "description": "Warning! Operator 33 (None) encountered a DataFrame resulting from an operation without mlinspect support!",
+            "to_neighbors": [
+                12
+            ]
+        },
+        "12": {
+            "node_id": 12,
+            "operator": "Train Data",
+            "function": "LogisticRegression",
+            "description": null,
+            "to_neighbors": [
+                14
+            ]
+        },
+        "-6": {
+            "node_id": -6,
+            "operator": "Encountered unsupported operation!",
+            "function": null,
+            "description": "Warning! Operator 33 (None) encountered a DataFrame resulting from an operation without mlinspect support!",
+            "to_neighbors": [
+                13
+            ]
+        },
+        "13": {
+            "node_id": 13,
+            "operator": "Train Labels",
+            "function": "LogisticRegression",
+            "description": null,
+            "to_neighbors": [
+                14
+            ]
+        },
+        "14": {
+            "node_id": 14,
+            "operator": "Estimator",
+            "function": "LogisticRegression",
+            "description": "Logistic Regression",
+            "to_neighbors": [
+                18
+            ]
+        },
+        "-7": {
+            "node_id": -7,
+            "operator": "Encountered unsupported operation!",
+            "function": null,
+            "description": "Warning! Operator 31 (None) encountered a DataFrame resulting from an operation without mlinspect support!",
+            "to_neighbors": [
+                15
+            ]
+        },
+        "15": {
+            "node_id": 15,
+            "operator": "Transformer",
+            "function": "StandardScaler",
+            "description": "Standard Scaler: transform",
+            "to_neighbors": [],
+            "columns": [
+                "array"
+            ]
+        },
+        "-8": {
+            "node_id": -8,
+            "operator": "Encountered unsupported operation!",
+            "function": null,
+            "description": "Warning! Operator 760 (None) encountered a DataFrame resulting from an operation without mlinspect support!",
+            "to_neighbors": [
+                16
+            ]
+        },
+        "16": {
+            "node_id": 16,
+            "operator": "Test Data",
+            "function": "score",
+            "description": null,
+            "to_neighbors": [
+                18
+            ]
+        },
+        "-9": {
+            "node_id": -9,
+            "operator": "Encountered unsupported operation!",
+            "function": null,
+            "description": "Warning! Operator 760 (None) encountered a DataFrame resulting from an operation without mlinspect support!",
+            "to_neighbors": [
+                17
+            ]
+        },
+        "17": {
+            "node_id": 17,
+            "operator": "Test Labels",
+            "function": "score",
+            "description": null,
+            "to_neighbors": [
+                18
+            ]
+        },
+        "18": {
+            "node_id": 18,
+            "operator": "Score",
+            "function": "score",
+            "description": "Logistic Regression",
+            "to_neighbors": []
+        },
+        "-10": {
+            "node_id": -10,
+            "operator": "Encountered unsupported operation!",
+            "function": null,
+            "description": "Warning! Operator 31 (None) encountered a DataFrame resulting from an operation without mlinspect support!",
+            "to_neighbors": [
+                19
+            ]
+        },
+        "19": {
+            "node_id": 19,
+            "operator": "Transformer",
+            "function": "StandardScaler",
+            "description": "Standard Scaler: fit_transform",
+            "to_neighbors": [],
+            "columns": [
+                "array"
+            ]
+        },
+        "-11": {
+            "node_id": -11,
+            "operator": "Encountered unsupported operation!",
+            "function": null,
+            "description": "Warning! Operator 33 (None) encountered a DataFrame resulting from an operation without mlinspect support!",
+            "to_neighbors": [
+                20
+            ]
+        },
+        "20": {
+            "node_id": 20,
+            "operator": "Train Data",
+            "function": "LogisticRegression",
+            "description": null,
+            "to_neighbors": [
+                22
+            ]
+        },
+        "-12": {
+            "node_id": -12,
+            "operator": "Encountered unsupported operation!",
+            "function": null,
+            "description": "Warning! Operator 33 (None) encountered a DataFrame resulting from an operation without mlinspect support!",
+            "to_neighbors": [
+                21
+            ]
+        },
+        "21": {
+            "node_id": 21,
+            "operator": "Train Labels",
+            "function": "LogisticRegression",
+            "description": null,
+            "to_neighbors": [
+                22
+            ]
+        },
+        "22": {
+            "node_id": 22,
+            "operator": "Estimator",
+            "function": "LogisticRegression",
+            "description": "Logistic Regression",
+            "to_neighbors": [
+                26
+            ]
+        },
+        "-13": {
+            "node_id": -13,
+            "operator": "Encountered unsupported operation!",
+            "function": null,
+            "description": "Warning! Operator 31 (None) encountered a DataFrame resulting from an operation without mlinspect support!",
+            "to_neighbors": [
+                23
+            ]
+        },
+        "23": {
+            "node_id": 23,
+            "operator": "Transformer",
+            "function": "StandardScaler",
+            "description": "Standard Scaler: transform",
+            "to_neighbors": [],
+            "columns": [
+                "array"
+            ]
+        },
+        "-14": {
+            "node_id": -14,
+            "operator": "Encountered unsupported operation!",
+            "function": null,
+            "description": "Warning! Operator 760 (None) encountered a DataFrame resulting from an operation without mlinspect support!",
+            "to_neighbors": [
+                24
+            ]
+        },
+        "24": {
+            "node_id": 24,
+            "operator": "Test Data",
+            "function": "score",
+            "description": null,
+            "to_neighbors": [
+                26
+            ]
+        },
+        "-15": {
+            "node_id": -15,
+            "operator": "Encountered unsupported operation!",
+            "function": null,
+            "description": "Warning! Operator 760 (None) encountered a DataFrame resulting from an operation without mlinspect support!",
+            "to_neighbors": [
+                25
+            ]
+        },
+        "25": {
+            "node_id": 25,
+            "operator": "Test Labels",
+            "function": "score",
+            "description": null,
+            "to_neighbors": [
+                26
+            ]
+        },
+        "26": {
+            "node_id": 26,
+            "operator": "Score",
+            "function": "score",
+            "description": "Logistic Regression",
+            "to_neighbors": []
+        },
+        "-16": {
+            "node_id": -16,
+            "operator": "Encountered unsupported operation!",
+            "function": null,
+            "description": "Warning! Operator 31 (None) encountered a DataFrame resulting from an operation without mlinspect support!",
+            "to_neighbors": [
+                27
+            ]
+        },
+        "27": {
+            "node_id": 27,
+            "operator": "Transformer",
+            "function": "StandardScaler",
+            "description": "Standard Scaler: fit_transform",
+            "to_neighbors": [],
+            "columns": [
+                "array"
+            ]
+        },
+        "-17": {
+            "node_id": -17,
+            "operator": "Encountered unsupported operation!",
+            "function": null,
+            "description": "Warning! Operator 33 (None) encountered a DataFrame resulting from an operation without mlinspect support!",
+            "to_neighbors": [
+                28
+            ]
+        },
+        "28": {
+            "node_id": 28,
+            "operator": "Train Data",
+            "function": "LogisticRegression",
+            "description": null,
+            "to_neighbors": [
+                30
+            ]
+        },
+        "-18": {
+            "node_id": -18,
+            "operator": "Encountered unsupported operation!",
+            "function": null,
+            "description": "Warning! Operator 33 (None) encountered a DataFrame resulting from an operation without mlinspect support!",
+            "to_neighbors": [
+                29
+            ]
+        },
+        "29": {
+            "node_id": 29,
+            "operator": "Train Labels",
+            "function": "LogisticRegression",
+            "description": null,
+            "to_neighbors": [
+                30
+            ]
+        },
+        "30": {
+            "node_id": 30,
+            "operator": "Estimator",
+            "function": "LogisticRegression",
+            "description": "Logistic Regression",
+            "to_neighbors": [
+                34
+            ]
+        },
+        "-19": {
+            "node_id": -19,
+            "operator": "Encountered unsupported operation!",
+            "function": null,
+            "description": "Warning! Operator 31 (None) encountered a DataFrame resulting from an operation without mlinspect support!",
+            "to_neighbors": [
+                31
+            ]
+        },
+        "31": {
+            "node_id": 31,
+            "operator": "Transformer",
+            "function": "StandardScaler",
+            "description": "Standard Scaler: transform",
+            "to_neighbors": [],
+            "columns": [
+                "array"
+            ]
+        },
+        "-20": {
+            "node_id": -20,
+            "operator": "Encountered unsupported operation!",
+            "function": null,
+            "description": "Warning! Operator 760 (None) encountered a DataFrame resulting from an operation without mlinspect support!",
+            "to_neighbors": [
+                32
+            ]
+        },
+        "32": {
+            "node_id": 32,
+            "operator": "Test Data",
+            "function": "score",
+            "description": null,
+            "to_neighbors": [
+                34
+            ]
+        },
+        "-21": {
+            "node_id": -21,
+            "operator": "Encountered unsupported operation!",
+            "function": null,
+            "description": "Warning! Operator 760 (None) encountered a DataFrame resulting from an operation without mlinspect support!",
+            "to_neighbors": [
+                33
+            ]
+        },
+        "33": {
+            "node_id": 33,
+            "operator": "Test Labels",
+            "function": "score",
+            "description": null,
+            "to_neighbors": [
+                34
+            ]
+        },
+        "34": {
+            "node_id": 34,
+            "operator": "Score",
+            "function": "score",
+            "description": "Logistic Regression",
+            "to_neighbors": []
+        },
+        "-22": {
+            "node_id": -22,
+            "operator": "Encountered unsupported operation!",
+            "function": null,
+            "description": "Warning! Operator 31 (None) encountered a DataFrame resulting from an operation without mlinspect support!",
+            "to_neighbors": [
+                35
+            ]
+        },
+        "35": {
+            "node_id": 35,
+            "operator": "Transformer",
+            "function": "StandardScaler",
+            "description": "Standard Scaler: fit_transform",
+            "to_neighbors": [],
+            "columns": [
+                "array"
+            ]
+        },
+        "-23": {
+            "node_id": -23,
+            "operator": "Encountered unsupported operation!",
+            "function": null,
+            "description": "Warning! Operator 33 (None) encountered a DataFrame resulting from an operation without mlinspect support!",
+            "to_neighbors": [
+                36
+            ]
+        },
+        "36": {
+            "node_id": 36,
+            "operator": "Train Data",
+            "function": "LogisticRegression",
+            "description": null,
+            "to_neighbors": [
+                38
+            ]
+        },
+        "-24": {
+            "node_id": -24,
+            "operator": "Encountered unsupported operation!",
+            "function": null,
+            "description": "Warning! Operator 33 (None) encountered a DataFrame resulting from an operation without mlinspect support!",
+            "to_neighbors": [
+                37
+            ]
+        },
+        "37": {
+            "node_id": 37,
+            "operator": "Train Labels",
+            "function": "LogisticRegression",
+            "description": null,
+            "to_neighbors": [
+                38
+            ]
+        },
+        "38": {
+            "node_id": 38,
+            "operator": "Estimator",
+            "function": "LogisticRegression",
+            "description": "Logistic Regression",
+            "to_neighbors": [
+                42
+            ]
+        },
+        "-25": {
+            "node_id": -25,
+            "operator": "Encountered unsupported operation!",
+            "function": null,
+            "description": "Warning! Operator 31 (None) encountered a DataFrame resulting from an operation without mlinspect support!",
+            "to_neighbors": [
+                39
+            ]
+        },
+        "39": {
+            "node_id": 39,
+            "operator": "Transformer",
+            "function": "StandardScaler",
+            "description": "Standard Scaler: transform",
+            "to_neighbors": [],
+            "columns": [
+                "array"
+            ]
+        },
+        "-26": {
+            "node_id": -26,
+            "operator": "Encountered unsupported operation!",
+            "function": null,
+            "description": "Warning! Operator 760 (None) encountered a DataFrame resulting from an operation without mlinspect support!",
+            "to_neighbors": [
+                40
+            ]
+        },
+        "40": {
+            "node_id": 40,
+            "operator": "Test Data",
+            "function": "score",
+            "description": null,
+            "to_neighbors": [
+                42
+            ]
+        },
+        "-27": {
+            "node_id": -27,
+            "operator": "Encountered unsupported operation!",
+            "function": null,
+            "description": "Warning! Operator 760 (None) encountered a DataFrame resulting from an operation without mlinspect support!",
+            "to_neighbors": [
+                41
+            ]
+        },
+        "41": {
+            "node_id": 41,
+            "operator": "Test Labels",
+            "function": "score",
+            "description": null,
+            "to_neighbors": [
+                42
+            ]
+        },
+        "42": {
+            "node_id": 42,
+            "operator": "Score",
+            "function": "score",
+            "description": "Logistic Regression",
+            "to_neighbors": []
+        },
+        "-28": {
+            "node_id": -28,
+            "operator": "Encountered unsupported operation!",
+            "function": null,
+            "description": "Warning! Operator 31 (None) encountered a DataFrame resulting from an operation without mlinspect support!",
+            "to_neighbors": [
+                43
+            ]
+        },
+        "43": {
+            "node_id": 43,
+            "operator": "Transformer",
+            "function": "StandardScaler",
+            "description": "Standard Scaler: fit_transform",
+            "to_neighbors": [],
+            "columns": [
+                "array"
+            ]
+        },
+        "-29": {
+            "node_id": -29,
+            "operator": "Encountered unsupported operation!",
+            "function": null,
+            "description": "Warning! Operator 33 (None) encountered a DataFrame resulting from an operation without mlinspect support!",
+            "to_neighbors": [
+                44
+            ]
+        },
+        "44": {
+            "node_id": 44,
+            "operator": "Train Data",
+            "function": "LogisticRegression",
+            "description": null,
+            "to_neighbors": [
+                46
+            ]
+        },
+        "-30": {
+            "node_id": -30,
+            "operator": "Encountered unsupported operation!",
+            "function": null,
+            "description": "Warning! Operator 33 (None) encountered a DataFrame resulting from an operation without mlinspect support!",
+            "to_neighbors": [
+                45
+            ]
+        },
+        "45": {
+            "node_id": 45,
+            "operator": "Train Labels",
+            "function": "LogisticRegression",
+            "description": null,
+            "to_neighbors": [
+                46
+            ]
+        },
+        "46": {
+            "node_id": 46,
+            "operator": "Estimator",
+            "function": "LogisticRegression",
+            "description": "Logistic Regression",
+            "to_neighbors": [
+                50
+            ]
+        },
+        "-31": {
+            "node_id": -31,
+            "operator": "Encountered unsupported operation!",
+            "function": null,
+            "description": "Warning! Operator 31 (None) encountered a DataFrame resulting from an operation without mlinspect support!",
+            "to_neighbors": [
+                47
+            ]
+        },
+        "47": {
+            "node_id": 47,
+            "operator": "Transformer",
+            "function": "StandardScaler",
+            "description": "Standard Scaler: transform",
+            "to_neighbors": [],
+            "columns": [
+                "array"
+            ]
+        },
+        "-32": {
+            "node_id": -32,
+            "operator": "Encountered unsupported operation!",
+            "function": null,
+            "description": "Warning! Operator 760 (None) encountered a DataFrame resulting from an operation without mlinspect support!",
+            "to_neighbors": [
+                48
+            ]
+        },
+        "48": {
+            "node_id": 48,
+            "operator": "Test Data",
+            "function": "score",
+            "description": null,
+            "to_neighbors": [
+                50
+            ]
+        },
+        "-33": {
+            "node_id": -33,
+            "operator": "Encountered unsupported operation!",
+            "function": null,
+            "description": "Warning! Operator 760 (None) encountered a DataFrame resulting from an operation without mlinspect support!",
+            "to_neighbors": [
+                49
+            ]
+        },
+        "49": {
+            "node_id": 49,
+            "operator": "Test Labels",
+            "function": "score",
+            "description": null,
+            "to_neighbors": [
+                50
+            ]
+        },
+        "50": {
+            "node_id": 50,
+            "operator": "Score",
+            "function": "score",
+            "description": "Logistic Regression",
+            "to_neighbors": []
+        }
+    }
+}

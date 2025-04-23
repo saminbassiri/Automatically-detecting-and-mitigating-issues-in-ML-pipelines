@@ -1,0 +1,344 @@
+{
+    "nodes": {
+        "0": {
+            "description": "adult_data.csv",
+            "function": "read_csv",
+            "operator": "Data Source",
+            "summary_statistics": {
+                "age": {
+                    "count": 1000.0,
+                    "mean": 38.05,
+                    "std": 13.35,
+                    "min": 17.0,
+                    "25%": 28.0,
+                    "50%": 36.0,
+                    "75%": 46.0,
+                    "max": 90.0
+                },
+                "fnlwgt": {
+                    "count": 1000.0,
+                    "mean": 191904.98,
+                    "std": 108125.54,
+                    "min": 21174.0,
+                    "25%": 115041.25,
+                    "50%": 180590.5,
+                    "75%": 247152.25,
+                    "max": 1033222.0
+                },
+                "education-num": {
+                    "count": 1000.0,
+                    "mean": 10.08,
+                    "std": 2.55,
+                    "min": 1.0,
+                    "25%": 9.0,
+                    "50%": 10.0,
+                    "75%": 12.0,
+                    "max": 16.0
+                },
+                "capital-gain": {
+                    "count": 1000.0,
+                    "mean": 588.53,
+                    "std": 2618.54,
+                    "min": 0.0,
+                    "25%": 0.0,
+                    "50%": 0.0,
+                    "75%": 0.0,
+                    "max": 34095.0
+                },
+                "capital-loss": {
+                    "count": 1000.0,
+                    "mean": 92.96,
+                    "std": 412.44,
+                    "min": 0.0,
+                    "25%": 0.0,
+                    "50%": 0.0,
+                    "75%": 0.0,
+                    "max": 2415.0
+                },
+                "hours-per-week": {
+                    "count": 1000.0,
+                    "mean": 39.88,
+                    "std": 12.02,
+                    "min": 1.0,
+                    "25%": 40.0,
+                    "50%": 40.0,
+                    "75%": 45.0,
+                    "max": 99.0
+                }
+            },
+            "data_distribution": {
+                "skewness": {
+                    "age": 0.59,
+                    "fnlwgt": 1.48,
+                    "education-num": -0.37,
+                    "capital-gain": 6.24,
+                    "capital-loss": 4.34,
+                    "hours-per-week": -0.0
+                },
+                "kurtosis": {
+                    "age": -0.05,
+                    "fnlwgt": 5.71,
+                    "education-num": 0.83,
+                    "capital-gain": 49.2,
+                    "capital-loss": 17.36,
+                    "hours-per-week": 2.32
+                }
+            },
+            "categorical_feature_analysis": {
+                "workclass": {
+                    "unique_values": 7,
+                    "most_frequent_value": " Private",
+                    "missing_values": 0
+                },
+                "education": {
+                    "unique_values": 16,
+                    "most_frequent_value": " HS-grad",
+                    "missing_values": 0
+                },
+                "marital-status": {
+                    "unique_values": 7,
+                    "most_frequent_value": " Married-civ-spouse",
+                    "missing_values": 0
+                },
+                "occupation": {
+                    "unique_values": 15,
+                    "most_frequent_value": " Craft-repair",
+                    "missing_values": 0
+                },
+                "relationship": {
+                    "unique_values": 6,
+                    "most_frequent_value": " Husband",
+                    "missing_values": 0
+                },
+                "race": {
+                    "unique_values": 5,
+                    "most_frequent_value": " White",
+                    "missing_values": 0
+                },
+                "sex": {
+                    "unique_values": 2,
+                    "most_frequent_value": " Male",
+                    "missing_values": 0
+                },
+                "native-country": {
+                    "unique_values": 29,
+                    "most_frequent_value": " United-States",
+                    "missing_values": 0
+                },
+                "salary": {
+                    "unique_values": 2,
+                    "most_frequent_value": " <=50K",
+                    "missing_values": 0
+                }
+            },
+            "missing_value_summary": {
+                "message": "No missing values"
+            }
+        },
+        "9": {
+            "description": "to ['age', 'fnlwgt', 'education-num', 'capital-gain', 'capital-loss', 'hours-per-week']",
+            "function": "ColumnTransformer",
+            "operator": "Projection",
+            "summary_statistics": {
+                "age": {
+                    "count": 1000.0,
+                    "mean": 38.13,
+                    "std": 13.74,
+                    "min": 17.0,
+                    "25%": 27.0,
+                    "50%": 36.0,
+                    "75%": 47.0,
+                    "max": 90.0
+                },
+                "fnlwgt": {
+                    "count": 1000.0,
+                    "mean": 189026.15,
+                    "std": 101582.83,
+                    "min": 20179.0,
+                    "25%": 116732.25,
+                    "50%": 180846.5,
+                    "75%": 240365.75,
+                    "max": 749636.0
+                },
+                "education-num": {
+                    "count": 1000.0,
+                    "mean": 10.17,
+                    "std": 2.5,
+                    "min": 1.0,
+                    "25%": 9.0,
+                    "50%": 10.0,
+                    "75%": 13.0,
+                    "max": 16.0
+                },
+                "capital-gain": {
+                    "count": 1000.0,
+                    "mean": 1014.19,
+                    "std": 6709.12,
+                    "min": 0.0,
+                    "25%": 0.0,
+                    "50%": 0.0,
+                    "75%": 0.0,
+                    "max": 99999.0
+                },
+                "capital-loss": {
+                    "count": 1000.0,
+                    "mean": 100.35,
+                    "std": 436.93,
+                    "min": 0.0,
+                    "25%": 0.0,
+                    "50%": 0.0,
+                    "75%": 0.0,
+                    "max": 4356.0
+                },
+                "hours-per-week": {
+                    "count": 1000.0,
+                    "mean": 40.65,
+                    "std": 12.4,
+                    "min": 1.0,
+                    "25%": 40.0,
+                    "50%": 40.0,
+                    "75%": 45.0,
+                    "max": 99.0
+                }
+            },
+            "data_distribution": {
+                "skewness": {
+                    "age": 0.65,
+                    "fnlwgt": 1.02,
+                    "education-num": -0.25,
+                    "capital-gain": 13.08,
+                    "capital-loss": 4.52,
+                    "hours-per-week": 0.14
+                },
+                "kurtosis": {
+                    "age": 0.17,
+                    "fnlwgt": 2.39,
+                    "education-num": 0.5,
+                    "capital-gain": 187.46,
+                    "capital-loss": 21.58,
+                    "hours-per-week": 2.87
+                }
+            },
+            "categorical_feature_analysis": null,
+            "missing_value_summary": {
+                "message": "No missing values"
+            }
+        },
+        "16": {
+            "description": "to ['age', 'fnlwgt', 'education-num', 'capital-gain', 'capital-loss', 'hours-per-week']",
+            "function": "ColumnTransformer",
+            "operator": "Projection",
+            "summary_statistics": {
+                "age": {
+                    "count": 1000.0,
+                    "mean": 37.76,
+                    "std": 13.54,
+                    "min": 17.0,
+                    "25%": 27.0,
+                    "50%": 36.0,
+                    "75%": 46.0,
+                    "max": 84.0
+                },
+                "fnlwgt": {
+                    "count": 1000.0,
+                    "mean": 190887.3,
+                    "std": 106921.3,
+                    "min": 14878.0,
+                    "25%": 120003.75,
+                    "50%": 182473.0,
+                    "75%": 238673.0,
+                    "max": 1033222.0
+                },
+                "education-num": {
+                    "count": 1000.0,
+                    "mean": 10.25,
+                    "std": 2.53,
+                    "min": 2.0,
+                    "25%": 9.0,
+                    "50%": 10.0,
+                    "75%": 13.0,
+                    "max": 16.0
+                },
+                "capital-gain": {
+                    "count": 1000.0,
+                    "mean": 1108.68,
+                    "std": 8006.51,
+                    "min": 0.0,
+                    "25%": 0.0,
+                    "50%": 0.0,
+                    "75%": 0.0,
+                    "max": 99999.0
+                },
+                "capital-loss": {
+                    "count": 1000.0,
+                    "mean": 63.39,
+                    "std": 341.02,
+                    "min": 0.0,
+                    "25%": 0.0,
+                    "50%": 0.0,
+                    "75%": 0.0,
+                    "max": 2444.0
+                },
+                "hours-per-week": {
+                    "count": 1000.0,
+                    "mean": 40.64,
+                    "std": 12.62,
+                    "min": 2.0,
+                    "25%": 40.0,
+                    "50%": 40.0,
+                    "75%": 45.0,
+                    "max": 99.0
+                }
+            },
+            "data_distribution": {
+                "skewness": {
+                    "age": 0.68,
+                    "fnlwgt": 1.52,
+                    "education-num": -0.19,
+                    "capital-gain": 11.43,
+                    "capital-loss": 5.29,
+                    "hours-per-week": 0.29
+                },
+                "kurtosis": {
+                    "age": -0.02,
+                    "fnlwgt": 6.39,
+                    "education-num": 0.33,
+                    "capital-gain": 137.12,
+                    "capital-loss": 26.58,
+                    "hours-per-week": 3.22
+                }
+            },
+            "categorical_feature_analysis": null,
+            "missing_value_summary": {
+                "message": "No missing values"
+            }
+        }
+    },
+    "Prediction_statistics": {
+        " <=50K": {
+            "precision": 0.9034067303697548,
+            "recall": 0.8810777957860616,
+            "f1-score": 0.892102564102564,
+            "support": 4936.0
+        },
+        " >50K": {
+            "precision": 0.6545026486168334,
+            "recall": 0.7051363348129359,
+            "f1-score": 0.6788766788766788,
+            "support": 1577.0
+        },
+        "accuracy": 0.8384768923691079,
+        "macro avg": {
+            "precision": 0.7789546894932942,
+            "recall": 0.7931070652994987,
+            "f1-score": 0.7854896214896214,
+            "support": 6513.0
+        },
+        "weighted avg": {
+            "precision": 0.8431393056922856,
+            "recall": 0.8384768923691079,
+            "f1-score": 0.8404739411943465,
+            "support": 6513.0
+        }
+    }
+}

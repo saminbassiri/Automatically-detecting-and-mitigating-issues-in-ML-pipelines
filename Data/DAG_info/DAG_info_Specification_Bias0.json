@@ -1,0 +1,236 @@
+{
+    "nodes": {
+        "0": {
+            "node_id": 0,
+            "operator": "Data Source",
+            "function": "read_csv",
+            "description": "adult_data.csv",
+            "to_neighbors": [
+                1,
+                2,
+                3
+            ]
+        },
+        "1": {
+            "node_id": 1,
+            "operator": "Projection",
+            "function": "__getitem__",
+            "description": "to ['salary']",
+            "to_neighbors": []
+        },
+        "2": {
+            "node_id": 2,
+            "operator": "Train Test Split",
+            "function": "train_test_split",
+            "description": "(Train Data)",
+            "to_neighbors": [
+                4
+            ]
+        },
+        "3": {
+            "node_id": 3,
+            "operator": "Train Test Split",
+            "function": "train_test_split",
+            "description": "(Test Data)",
+            "to_neighbors": [
+                5
+            ]
+        },
+        "4": {
+            "node_id": 4,
+            "operator": "Projection",
+            "function": "__getitem__",
+            "description": "to ['salary']",
+            "to_neighbors": []
+        },
+        "5": {
+            "node_id": 5,
+            "operator": "Projection",
+            "function": "__getitem__",
+            "description": "to ['salary']",
+            "to_neighbors": []
+        },
+        "-1": {
+            "node_id": -1,
+            "operator": "Encountered unsupported operation!",
+            "function": null,
+            "description": "Warning! Operator 32 (None) encountered a DataFrame resulting from an operation without mlinspect support!",
+            "to_neighbors": [
+                6,
+                8
+            ]
+        },
+        "6": {
+            "node_id": 6,
+            "operator": "Projection",
+            "function": "ColumnTransformer",
+            "description": "to ['age', 'fnlwgt', 'education-num', 'capital-gain', 'capital-loss', 'hours-per-week']",
+            "to_neighbors": [
+                7
+            ]
+        },
+        "7": {
+            "node_id": 7,
+            "operator": "Transformer",
+            "function": "SimpleImputer",
+            "description": "Simple Imputer: fit_transform",
+            "to_neighbors": [
+                12
+            ],
+            "columns": [
+                "age",
+                "fnlwgt",
+                "education-num",
+                "capital-gain",
+                "capital-loss",
+                "hours-per-week"
+            ]
+        },
+        "8": {
+            "node_id": 8,
+            "operator": "Projection",
+            "function": "ColumnTransformer",
+            "description": "to ['workclass', 'education', 'marital-status', 'occupation', 'relationship', 'race', 'sex', 'native-country']",
+            "to_neighbors": [
+                9,
+                11
+            ]
+        },
+        "9": {
+            "node_id": 9,
+            "operator": "Transformer",
+            "function": "SimpleImputer",
+            "description": "Simple Imputer: fit_transform",
+            "to_neighbors": [
+                10
+            ],
+            "columns": [
+                "workclass",
+                "education",
+                "marital-status",
+                "occupation",
+                "relationship",
+                "race",
+                "sex",
+                "native-country"
+            ]
+        },
+        "10": {
+            "node_id": 10,
+            "operator": "Transformer",
+            "function": "OneHotEncoder",
+            "description": "One-Hot Encoder: fit_transform",
+            "to_neighbors": [],
+            "columns": [
+                "array"
+            ]
+        },
+        "11": {
+            "node_id": 11,
+            "operator": "pipeline",
+            "function": "Pipeline.fit_transform",
+            "description": null,
+            "to_neighbors": [
+                12
+            ]
+        },
+        "12": {
+            "node_id": 12,
+            "operator": "Concatenation",
+            "function": "ColumnTransformer",
+            "description": null,
+            "to_neighbors": []
+        },
+        "-2": {
+            "node_id": -2,
+            "operator": "Encountered unsupported operation!",
+            "function": null,
+            "description": "Warning! Operator 32 (None) encountered a DataFrame resulting from an operation without mlinspect support!",
+            "to_neighbors": [
+                13,
+                15
+            ]
+        },
+        "13": {
+            "node_id": 13,
+            "operator": "Projection",
+            "function": "ColumnTransformer",
+            "description": "to ['age', 'fnlwgt', 'education-num', 'capital-gain', 'capital-loss', 'hours-per-week']",
+            "to_neighbors": [
+                14
+            ]
+        },
+        "14": {
+            "node_id": 14,
+            "operator": "Transformer",
+            "function": "SimpleImputer",
+            "description": "Simple Imputer: transform",
+            "to_neighbors": [
+                19
+            ],
+            "columns": [
+                "age",
+                "fnlwgt",
+                "education-num",
+                "capital-gain",
+                "capital-loss",
+                "hours-per-week"
+            ]
+        },
+        "15": {
+            "node_id": 15,
+            "operator": "Projection",
+            "function": "ColumnTransformer",
+            "description": "to ['workclass', 'education', 'marital-status', 'occupation', 'relationship', 'race', 'sex', 'native-country']",
+            "to_neighbors": [
+                16,
+                18
+            ]
+        },
+        "16": {
+            "node_id": 16,
+            "operator": "Transformer",
+            "function": "SimpleImputer",
+            "description": "Simple Imputer: transform",
+            "to_neighbors": [
+                17
+            ],
+            "columns": [
+                "workclass",
+                "education",
+                "marital-status",
+                "occupation",
+                "relationship",
+                "race",
+                "sex",
+                "native-country"
+            ]
+        },
+        "17": {
+            "node_id": 17,
+            "operator": "Transformer",
+            "function": "OneHotEncoder",
+            "description": "One-Hot Encoder: transform",
+            "to_neighbors": [],
+            "columns": [
+                "array"
+            ]
+        },
+        "18": {
+            "node_id": 18,
+            "operator": "pipeline",
+            "function": "Pipeline.transform",
+            "description": null,
+            "to_neighbors": [
+                19
+            ]
+        },
+        "19": {
+            "node_id": 19,
+            "operator": "Concatenation",
+            "function": "ColumnTransformer",
+            "description": null,
+            "to_neighbors": []
+        }
+    }
+}

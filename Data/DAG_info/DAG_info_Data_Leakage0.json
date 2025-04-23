@@ -1,0 +1,328 @@
+{
+    "nodes": {
+        "0": {
+            "node_id": 0,
+            "operator": "Data Source",
+            "function": "read_csv",
+            "description": "adult_data.csv",
+            "to_neighbors": [
+                1,
+                2
+            ]
+        },
+        "1": {
+            "node_id": 1,
+            "operator": "Projection",
+            "function": "__getitem__",
+            "description": "to ['age', 'hours-per-week', 'workclass', 'education', 'marital-status', 'occupation', 'relationship', 'race', 'sex', 'native-country']",
+            "to_neighbors": []
+        },
+        "2": {
+            "node_id": 2,
+            "operator": "Projection",
+            "function": "__getitem__",
+            "description": "to ['salary']",
+            "to_neighbors": [
+                -1
+            ]
+        },
+        "-1": {
+            "node_id": -1,
+            "operator": "Transformer",
+            "function": "LabelEncoder",
+            "description": "LabelEncoder.fit_transform",
+            "to_neighbors": [
+                3
+            ]
+        },
+        "3": {
+            "node_id": 3,
+            "operator": "Projection (Modify)",
+            "function": "__setitem__",
+            "description": "modifies ['salary']",
+            "to_neighbors": [
+                4,
+                5
+            ]
+        },
+        "4": {
+            "node_id": 4,
+            "operator": "Train Test Split",
+            "function": "train_test_split",
+            "description": "(Train Data)",
+            "to_neighbors": [
+                6,
+                -2
+            ]
+        },
+        "5": {
+            "node_id": 5,
+            "operator": "Train Test Split",
+            "function": "train_test_split",
+            "description": "(Test Data)",
+            "to_neighbors": [
+                7,
+                -3
+            ]
+        },
+        "6": {
+            "node_id": 6,
+            "operator": "Projection",
+            "function": "__getitem__",
+            "description": "to ['salary']",
+            "to_neighbors": [
+                18
+            ]
+        },
+        "7": {
+            "node_id": 7,
+            "operator": "Projection",
+            "function": "__getitem__",
+            "description": "to ['salary']",
+            "to_neighbors": []
+        },
+        "-2": {
+            "node_id": -2,
+            "operator": "ColumnTransformer",
+            "function": "ColumnTransformer.__init__",
+            "description": "preprocessor",
+            "to_neighbors": [
+                8,
+                12
+            ]
+        },
+        "8": {
+            "node_id": 8,
+            "operator": "Projection",
+            "function": "ColumnTransformer",
+            "description": "to ['age', 'hours-per-week']",
+            "to_neighbors": [
+                9
+            ]
+        },
+        "9": {
+            "node_id": 9,
+            "operator": "Transformer",
+            "function": "SimpleImputer",
+            "description": "Simple Imputer: fit_transform",
+            "to_neighbors": [
+                10
+            ],
+            "columns": [
+                "age",
+                "hours-per-week"
+            ]
+        },
+        "10": {
+            "node_id": 10,
+            "operator": "Transformer",
+            "function": "StandardScaler",
+            "description": "Standard Scaler: fit_transform",
+            "to_neighbors": [],
+            "columns": [
+                "array"
+            ]
+        },
+        "11": {
+            "node_id": 11,
+            "operator": "pipeline",
+            "function": "Pipeline.fit_transform",
+            "description": null,
+            "to_neighbors": [
+                16
+            ]
+        },
+        "12": {
+            "node_id": 12,
+            "operator": "Projection",
+            "function": "Pipeline.fit_transform",
+            "description": "to ['workclass', 'education', 'marital-status', 'occupation', 'relationship', 'race', 'sex', 'native-country']",
+            "to_neighbors": [
+                13
+            ]
+        },
+        "13": {
+            "node_id": 13,
+            "operator": "Transformer",
+            "function": "SimpleImputer",
+            "description": "Simple Imputer: fit_transform",
+            "to_neighbors": [
+                14
+            ],
+            "columns": [
+                "workclass",
+                "education",
+                "marital-status",
+                "occupation",
+                "relationship",
+                "race",
+                "sex",
+                "native-country"
+            ]
+        },
+        "14": {
+            "node_id": 14,
+            "operator": "Transformer",
+            "function": "OneHotEncoder",
+            "description": "One-Hot Encoder: fit_transform",
+            "to_neighbors": [
+                15
+            ],
+            "columns": [
+                "array"
+            ]
+        },
+        "15": {
+            "node_id": 15,
+            "operator": "pipeline",
+            "function": "Pipeline.fit_transform",
+            "description": null,
+            "to_neighbors": [
+                16
+            ]
+        },
+        "16": {
+            "node_id": 16,
+            "operator": "Concatenation",
+            "function": "ColumnTransformer",
+            "description": null,
+            "to_neighbors": [
+                17
+            ]
+        },
+        "17": {
+            "node_id": 17,
+            "operator": "Train Data",
+            "function": "LogisticRegression",
+            "description": null,
+            "to_neighbors": [
+                19
+            ]
+        },
+        "18": {
+            "node_id": 18,
+            "operator": "Train Labels",
+            "function": "LogisticRegression",
+            "description": null,
+            "to_neighbors": [
+                19
+            ]
+        },
+        "19": {
+            "node_id": 19,
+            "operator": "Estimator",
+            "function": "LogisticRegression",
+            "description": "Logistic Regression",
+            "to_neighbors": []
+        },
+        "-3": {
+            "node_id": -3,
+            "operator": "ColumnTransformer",
+            "function": "ColumnTransformer.__init__",
+            "description": "preprocessor",
+            "to_neighbors": [
+                20,
+                24
+            ]
+        },
+        "20": {
+            "node_id": 20,
+            "operator": "Projection",
+            "function": "ColumnTransformer",
+            "description": "to ['age', 'hours-per-week']",
+            "to_neighbors": [
+                21
+            ]
+        },
+        "21": {
+            "node_id": 21,
+            "operator": "Transformer",
+            "function": "SimpleImputer",
+            "description": "Simple Imputer: transform",
+            "to_neighbors": [
+                22
+            ],
+            "columns": [
+                "age",
+                "hours-per-week"
+            ]
+        },
+        "22": {
+            "node_id": 22,
+            "operator": "Transformer",
+            "function": "StandardScaler",
+            "description": "Standard Scaler: transform",
+            "to_neighbors": [],
+            "columns": [
+                "array"
+            ]
+        },
+        "23": {
+            "node_id": 23,
+            "operator": "pipeline",
+            "function": "Pipeline.transform",
+            "description": null,
+            "to_neighbors": [
+                28
+            ]
+        },
+        "24": {
+            "node_id": 24,
+            "operator": "Projection",
+            "function": "ColumnTransformer",
+            "description": "to ['workclass', 'education', 'marital-status', 'occupation', 'relationship', 'race', 'sex', 'native-country']",
+            "to_neighbors": [
+                25
+            ]
+        },
+        "25": {
+            "node_id": 25,
+            "operator": "Transformer",
+            "function": "SimpleImputer",
+            "description": "Simple Imputer: transform",
+            "to_neighbors": [
+                26
+            ],
+            "columns": [
+                "workclass",
+                "education",
+                "marital-status",
+                "occupation",
+                "relationship",
+                "race",
+                "sex",
+                "native-country"
+            ]
+        },
+        "26": {
+            "node_id": 26,
+            "operator": "Transformer",
+            "function": "OneHotEncoder",
+            "description": "One-Hot Encoder: transform",
+            "to_neighbors": [
+                27
+            ],
+            "columns": [
+                "array"
+            ]
+        },
+        "27": {
+            "node_id": 27,
+            "operator": "pipeline",
+            "function": "Pipeline.transform",
+            "description": null,
+            "to_neighbors": [
+                28
+            ]
+        },
+        "28": {
+            "node_id": 28,
+            "operator": "Concatenation",
+            "function": "ColumnTransformer",
+            "description": null,
+            "to_neighbors": [
+                19
+            ]
+        }
+    }
+}
