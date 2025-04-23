@@ -1,0 +1,85 @@
+{   "file_index":{
+        "1": "Aggregation_Errors",
+        "3": "Class_Imbalance",
+        "6": "Data_Filtering",
+        "9": "Data_Leakage",
+        "10": "Data_Slicing",
+        "14": "Specification_Bias",
+        "15": "Spurious_Correlations",
+        "16": "Preprocessing_Order"
+    },
+    "issue_description": {
+        "Aggregation_Errors": {
+            "name": "Aggregation Errors",
+            "text":"Aggregation Errors:\n\tSome data transfer like grouping, text normalization, temporal/spatial zooming, or granularity changes. Results in skewed datasets, information loss, and incorrect predictions.",
+            "fix": [
+                "Preserve granularity to avoid losing important details.",
+                "Validate aggregated data to ensure it reflects the original distribution.",
+                "Apply text normalization techniques carefully to prevent grouping unrelated observations."
+            ]
+        },
+        "Class_Imbalance":  {
+            "name": "Class Imbalance",
+            "text":"Class Imbalance:\n\tDataset has significantly more instances of one class than others, causing models to perform well on majority class but poorly on minority class."
+            ,"fix": [
+                    "Use resampling techniques such as oversampling or undersampling.",
+                    "Generate synthetic data for minority classes using SMOTE.",
+                    "Adjust class weights in the loss function to improve model fairness."
+                ]
+        },
+        "Data_Filtering":  {
+            "name": "Data Filtering",
+            "text":"Data Filtering:\n\tSelection or exclusion of data points during preprocessing alters feature class distribution, resulting in biased model evaluations."
+            ,"fix": [
+                    "Split datasets early to prevent biased filtering.",
+                    "Use proportional filtering techniques to maintain feature distribution.",
+                    "Monitor and validate feature distributions before and after filtering."
+                ]
+        },
+        "Data_Leakage":  {
+            "name": "Data Leakage",
+            "text":"Data Leakage:\n\tSome information from outside training dataset used in model creation, causing overly optimistic performance estimates and poor generalization."
+            ,"fix": [
+                    "Split raw data into training and test sets before preprocessing.",
+                    "Apply preprocessing separately to training and test sets.",
+                    "Ensure pipelines prevent leakage by fitting transformations only on training data."
+                ]
+        },
+        "Data_Slicing":  {
+            "name": "Data Slicing",
+            "text":"Data Slicing:\n\tIncorrect data subdivision leading to biased evaluations and missed performance issues across different data subsets."
+            ,"fix": [
+                    "Identify and analyze performance across relevant slices.",
+                    "Train separate models or adjust preprocessing for underperforming slices.",
+                    "Continuously monitor and document model performance on different slices."
+                ]
+        },
+        "Specification_Bias":  {
+            "name": "Specification Bias",
+            "text":"Specification Bias:\n\tErrors from feature selection choices where protected attributes are omitted but their proxies remain, causing unintended model biases."
+            ,"fix": [
+                "Identify and remove proxy variables that correlate with protected attributes.",
+                "Regularly audit feature selection decisions.",
+                "Document rationale behind feature inclusion and exclusion."
+            ] 
+        },
+        "Spurious_Correlations":  {
+            "name": "Spurious Correlations",
+            "text":"Spurious Correlations:\n\tOccurs when features in the dataset appear to be related to the target variable due to coincidences or artifacts rather than meaningful relationships, where models exploit superficial patterns that lack generalizable value."
+            ,"fix": [
+                "Use statistical tests to detect spurious correlations.",
+                "Apply regularization techniques to reduce reliance on irrelevant features.",
+                "Perform cross-validation to assess model robustness."
+            ]
+        },
+        "Preprocessing_Order":  {
+            "name": "Preprocessing Order",
+            "text":"Preprocessing Order:\n\tIncorrect sequence of preprocessing tasks leading to data leakage, poor feature selection, and suboptimal model training."
+            ,"fix": [
+                "Ensure transformations like scaling and imputation happen after data splitting.",
+                "Apply feature selection after preprocessing steps to avoid removing useful features.",
+                "Monitor model consistency under different preprocessing sequences."
+            ]
+        }
+    }
+}
